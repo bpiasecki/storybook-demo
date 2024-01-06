@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 @Component({
@@ -6,8 +6,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
   standalone: true,
   imports: [DropDownsModule],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './dropdown.component.scss'
 })
 export class DropdownComponent {
 
@@ -15,13 +14,6 @@ export class DropdownComponent {
   data?: DropdownData[];
 
   selectedValue?: DropdownData; 
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  onChange(value: DropdownData) {
-    this.selectedValue = value;
-    this.cdr.detectChanges();
-  }
 
 }
 

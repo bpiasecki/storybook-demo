@@ -20,16 +20,21 @@ const meta: Meta<DropdownComponent> = {
         },
     }),
     argTypes: {
-        data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],
+        data: [],
     },
 };
 
 export default meta;
 type Story = StoryObj<DropdownComponent>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Empty: Story = {
+export const TwoOptions: Story = {
     args: {
         data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],
+    },
+};
+
+export const Empty: Story = {
+    args: {
+        data: [],
     },
 };
