@@ -26,7 +26,7 @@ type Story = StoryObj<ButtonComponent>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    label: 'Button',
+    label: 'Button134',
   },
 };
 

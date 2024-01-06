@@ -511,7 +511,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Button',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Button13',\r\n  },\r\n}"
             },
             {
                 "name": "Small",
@@ -603,7 +603,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Button',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Button13',\r\n  },\r\n}"
                 },
                 {
                     "name": "Small",
