@@ -2,6 +2,39 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "DropdownData",
+            "id": "interface-DropdownData-5afd9e0aafefa7481dfef7c15e3bfdbe035b610059f2eb421d81b9de8eae0ec66a87f6b7cdbe9be9e0821fb92c25ef6f14e73a6dcf439909e557259e8e834e15",
+            "file": "src/app/shared/dropdown/dropdown.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';\r\nimport { DropDownsModule } from '@progress/kendo-angular-dropdowns';\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [DropDownsModule],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss',\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class DropdownComponent {\r\n\r\n  @Input()\r\n  data?: DropdownData[];\r\n\r\n  selectedValue?: DropdownData; \r\n\r\n  constructor(private cdr: ChangeDetectorRef) {}\r\n\r\n  onChange(value: DropdownData) {\r\n    this.selectedValue = value;\r\n    this.cdr.detectChanges();\r\n  }\r\n\r\n}\r\n\r\nexport interface DropdownData {\r\n  id: number;\r\n  name: string;\r\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "User",
             "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
             "file": "src/stories/user.ts",
@@ -34,7 +67,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-defd9188d7ffbd07e61c0db13ad5e46491a71ebb960614b5dfe1ac4ab396b1e4410b916c46c7682a83092249565959b56c284b7e64fa3b38a1f3abddd812304c",
+            "id": "component-AppComponent-5a1312e81db64d948fce6502d699d14ff2b9c2bdb924d271b7bd87a898c1c875821326d3a0e47eccc9b5f5f89d3eb2adb9fc03f605963207487ed71ef712e971",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -53,6 +86,16 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "exampleData",
+                    "defaultValue": "[{id: 5, name: 'test1'}, {id: 10, name: 'test2'}]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropdownData[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
                     "name": "title",
                     "defaultValue": "'storybook-demo'",
                     "deprecated": false,
@@ -60,7 +103,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 15
                 }
             ],
             "methodsClass": [
@@ -77,7 +120,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 18,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -109,18 +152,22 @@
                 {
                     "name": "ButtonComponent",
                     "type": "component"
+                },
+                {
+                    "name": "DropdownComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { ButtonComponent } from './shared/button/button.component';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterOutlet, ButtonComponent],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'storybook-demo';\r\n\r\n  onClickMethod(e: any) {\r\n    console.log(e)\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { ButtonComponent } from './shared/button/button.component';\r\nimport { DropdownComponent, DropdownData } from './shared/dropdown/dropdown.component';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterOutlet, ButtonComponent, DropdownComponent],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'storybook-demo';\r\n  exampleData: DropdownData[] = [{id: 5, name: 'test1'}, {id: 10, name: 'test2'}]\r\n\r\n  onClickMethod(e: any) {\r\n    console.log(e)\r\n  }\r\n}\r\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<app-button [label]=\"'text1'\" (onClick)=\"onClickMethod($event)\" [backgroundColor]=\"'red'\">\r\n</app-button>\r\n\r\n<router-outlet></router-outlet>"
+            "templateData": "<app-button [label]=\"'text1'\" (onClick)=\"onClickMethod($event)\" [backgroundColor]=\"'red'\">\r\n</app-button>\r\n\r\n<app-dropdown [data]=\"exampleData\"></app-dropdown>\r\n\r\n<router-outlet></router-outlet>"
         },
         {
             "name": "ButtonComponent",
@@ -219,6 +266,124 @@
                 }
             },
             "templateData": "<button class=\"storybook-button storybook-button--primary\" type=\"button\" (click)=\"onClick.emit($event)\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\" [ngClass]=\"classes\">\r\n    {{ label }}\r\n</button>"
+        },
+        {
+            "name": "DropdownComponent",
+            "id": "component-DropdownComponent-5afd9e0aafefa7481dfef7c15e3bfdbe035b610059f2eb421d81b9de8eae0ec66a87f6b7cdbe9be9e0821fb92c25ef6f14e73a6dcf439909e557259e8e834e15",
+            "file": "src/app/shared/dropdown/dropdown.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dropdown",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "DropdownData[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "selectedValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropdownData",
+                    "optional": true,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "DropdownData",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "DropdownData",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "DropDownsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';\r\nimport { DropDownsModule } from '@progress/kendo-angular-dropdowns';\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [DropDownsModule],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss',\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class DropdownComponent {\r\n\r\n  @Input()\r\n  data?: DropdownData[];\r\n\r\n  selectedValue?: DropdownData; \r\n\r\n  constructor(private cdr: ChangeDetectorRef) {}\r\n\r\n  onChange(value: DropdownData) {\r\n    this.selectedValue = value;\r\n    this.cdr.detectChanges();\r\n  }\r\n\r\n}\r\n\r\nexport interface DropdownData {\r\n  id: number;\r\n  name: string;\r\n}",
+            "styleUrl": "./dropdown.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<kendo-dropdownlist style=\"width: 200px;\" [data]=\"data\" valueField=\"id\" textField=\"name\" (selectionChange)=\"onChange($event)\">\r\n\r\n</kendo-dropdownlist>"
         },
         {
             "name": "HeaderComponent",
@@ -411,7 +576,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\r\n  providers: [provideRouter(routes)]\r\n}"
+                "defaultValue": "{\r\n  providers: [provideRouter(routes), provideAnimations()]\r\n}"
+            },
+            {
+                "name": "Empty",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n    args: {\r\n        data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],\r\n    },\r\n}"
             },
             {
                 "name": "Large",
@@ -494,6 +669,16 @@
                 "defaultValue": "{\r\n  title: 'Example/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: ButtonComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    backgroundColor: {\r\n      control: 'color',\r\n    },\r\n  },\r\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DropdownComponent>",
+                "defaultValue": "{\r\n    title: 'Example/Dropdown',\r\n    component: DropdownComponent,\r\n    tags: ['autodocs'],\r\n    decorators: [\r\n        applicationConfig({\r\n          providers: [provideAnimations()],\r\n        }),\r\n    ],\r\n    render: (args: DropdownComponent) => ({\r\n        props: {\r\n            data: null,\r\n            ...args,\r\n        },\r\n    }),\r\n    argTypes: {\r\n        data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],\r\n    },\r\n}"
+            },
+            {
                 "name": "preview",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -511,7 +696,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Button13',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Button134',\r\n  },\r\n}"
             },
             {
                 "name": "Small",
@@ -558,6 +743,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DropdownComponent>",
+                "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
@@ -571,7 +767,29 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\r\n  providers: [provideRouter(routes)]\r\n}"
+                    "defaultValue": "{\r\n  providers: [provideRouter(routes), provideAnimations()]\r\n}"
+                }
+            ],
+            "src/app/shared/dropdown/dropdown.stories.ts": [
+                {
+                    "name": "Empty",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n    args: {\r\n        data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],\r\n    },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DropdownComponent>",
+                    "defaultValue": "{\r\n    title: 'Example/Dropdown',\r\n    component: DropdownComponent,\r\n    tags: ['autodocs'],\r\n    decorators: [\r\n        applicationConfig({\r\n          providers: [provideAnimations()],\r\n        }),\r\n    ],\r\n    render: (args: DropdownComponent) => ({\r\n        props: {\r\n            data: null,\r\n            ...args,\r\n        },\r\n    }),\r\n    argTypes: {\r\n        data: [{ id: 10, name: 'text1' }, { id: 20, name: 'text2' }],\r\n    },\r\n}"
                 }
             ],
             "src/app/shared/button/button.stories.ts": [
@@ -603,7 +821,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Button13',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Button134',\r\n  },\r\n}"
                 },
                 {
                     "name": "Small",
@@ -734,6 +952,19 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "src/app/shared/dropdown/dropdown.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DropdownComponent>",
+                    "file": "src/app/shared/dropdown/dropdown.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
@@ -758,7 +989,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -816,6 +1047,44 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/dropdown/dropdown.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/dropdown/dropdown.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DropdownData",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/dropdown/dropdown.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Empty",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/dropdown/dropdown.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
